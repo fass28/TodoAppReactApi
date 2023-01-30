@@ -1,0 +1,29 @@
+.tasks-box{
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+  background-color: #393A4B;
+  color: white;
+}
+
+.ul-tasks{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.input-checkbox{
+  margin-right: 30px;
+}
+
+.tasks-footer{
+  color: rgb(155, 131, 131);
+  margin: 20px 0;
+}
+.span{
+  display: inline-block;
+  margin: 15px;
+}
+
+

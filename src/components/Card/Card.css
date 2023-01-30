@@ -1,0 +1,45 @@
+.card-box{
+  background-color: rgb(77, 121, 196);
+  text-align: center;
+  margin: 30px;
+  padding-bottom: 80px;
+  border-radius: 2%;
+}
+
+.user-img-box{
+  height: 100px;
+  background-color:greenyellow;
+  display: flex;
+  justify-content: center;
+}
+
+.user-img{
+  background-color: red;
+  width: 200px;
+  height:200px;
+  border-radius: 50%;
+  margin-top: 50px;
+  border: solid;
+  border-width: 8px;
+  border-color: white;
+  overflow: hidden;
+}
+
+.img{
+  height: 100%;
+  width: 100%;
+
+}
+
+.user-name{
+  margin-top: 170px;
+}
+
+.user-position{
+  color: rgb(156, 180, 201);
+}
+
+.card-box hr{
+  width: 80%;
+  margin: 30px auto;
+}
