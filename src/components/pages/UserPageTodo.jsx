@@ -8,14 +8,13 @@ export const UserPageTodo = () => {
   const { userid } = useParams();
   const [user, setUser] = useState(null);
   const [formState, setFormState] = useState('')
+  const [checked, setChecked] = useState([])
 
   const baseURLtasks = `https://63cf2168e52f5878299ab5e2.mockapi.io/api/users/${userid}/tasks`
   const baseURL = `https://63cf2168e52f5878299ab5e2.mockapi.io/api/users/${userid}`
  
 
 
-
- // console.log("params de ", userid);
 
   useEffect(() => {
     axios.get(baseURLtasks).then((response) => {
@@ -32,21 +31,54 @@ export const UserPageTodo = () => {
 
 const onFormSubmit = (e) => {
   e.preventDefault()
-  console.log(formState);
+  console.log(formState)
+  if (formState.length <= 1 || tasks.some(task => task.title === formState)) return
   axios.post(baseURLtasks, {
-    title: formState
+    title: formState,
+    done:false
   }).then((response) => {
     setFormState(response.data);
   })
 }
 
 
-const onDeleteTaskodo = (task) => {
-  const baseURLtasksId = `https://63cf2168e52f5878299ab5e2.mockapi.io/api/users/${userid}/tasks/${task}`
-  console.log(task);
-   axios.delete(baseURLtasksId, { done: true }).then((res) =>
-   console.log(res)
-   )  
+const onDeleteTaskTodo = (taskId) => {
+  const baseURLtasksId = `https://63cf2168e52f5878299ab5e2.mockapi.io/api/users/${userid}/tasks/${taskId}`
+  axios.delete(baseURLtasksId, { done: true }).then()  
+}
+
+const handleCheck = (event, id) => {
+  var updatedList = [...checked];
+  if (event.target.checked) {
+    updatedList = [...checked, id];
+  } else {
+    updatedList.splice(checked.indexOf(id), 1);
+  }
+  setChecked(updatedList);
+  console.log(checked);
+};
+
+
+
+const deleteAll = () => {
+  let ArrayUrlById = []
+  console.log('aqui');
+  ArrayUrlById  = checked.map((c) => {
+    let arrayURL = `https://63cf2168e52f5878299ab5e2.mockapi.io/api/users/${userid}/tasks/${c}`
+     
+    return arrayURL
+  
+  })
+  console.log(ArrayUrlById);
+  const requests = ArrayUrlById.map(url => axios.delete(url,{done:true}));
+
+  axios.all(requests)
+  .then(responses => {
+    responses.forEach(response => console.log(response.data));
+  })
+  .catch(error => {
+    console.log(error);
+  });
 }
 
   return (
@@ -60,9 +92,16 @@ const onDeleteTaskodo = (task) => {
             {
               tasks.map((task) => (
               <div className="li-tasks" key={task.id}>
-              <input type="checkbox" className="input-checkbox"></input>
-               <span>{task.title}</span>
-               <span className="button-x" onClick={()=>onDeleteTaskodo(task.id)}>xxx</span> 
+                <input 
+                  type="checkbox" 
+                  className="input-checkbox"
+                  onChange={(e)=>handleCheck(e,task.id)}
+                  >
+                </input>
+                <span className={`align-self-center ${(task.done) ?  'text-decoration-line-through' : ''}`}
+                >{task.title}
+                </span>
+                <span className="button-x" onClick={()=>onDeleteTaskTodo(task.id)}>xxx</span> 
               </div> ))
             }
           </div>
@@ -71,7 +110,7 @@ const onDeleteTaskodo = (task) => {
           <span className="span2 span">All</span>
           <span className="span3 span">Active</span>
           <span className="span4 span">Completed</span>
-          <span className="span5 span">Clear Completed</span>
+          <span className="span5 span" onClick={deleteAll}>Clear Completed</span>
         </div>
         </form>
       </div>
