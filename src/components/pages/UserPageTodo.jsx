@@ -11,6 +11,7 @@ export const UserPageTodo = () => {
 
   const baseURLtasks = `https://63cf2168e52f5878299ab5e2.mockapi.io/api/users/${userid}/tasks`
   const baseURL = `https://63cf2168e52f5878299ab5e2.mockapi.io/api/users/${userid}`
+ 
 
 
 
@@ -39,6 +40,15 @@ const onFormSubmit = (e) => {
   })
 }
 
+
+const onDeleteTaskodo = (task) => {
+  const baseURLtasksId = `https://63cf2168e52f5878299ab5e2.mockapi.io/api/users/${userid}/tasks/${task}`
+  console.log(task);
+   axios.delete(baseURLtasksId, { done: true }).then((res) =>
+   console.log(res)
+   )  
+}
+
   return (
     <>
     <div className="container">
@@ -47,10 +57,12 @@ const onFormSubmit = (e) => {
         <form action="" onSubmit={onFormSubmit} >
           <div className="div-tasks">
             <input type="text" className="w-100"  placeholder="enter a new Todo" onChange={(e)=> setFormState(e.target.value)} />
-            {tasks.map((task) => (
+            {
+              tasks.map((task) => (
               <div className="li-tasks" key={task.id}>
               <input type="checkbox" className="input-checkbox"></input>
-                {task.title}
+               <span>{task.title}</span>
+               <span className="button-x" onClick={()=>onDeleteTaskodo(task.id)}>xxx</span> 
               </div> ))
             }
           </div>

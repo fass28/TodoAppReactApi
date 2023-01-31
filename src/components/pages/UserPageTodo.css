@@ -26,4 +26,12 @@
   margin: 15px;
 }
 
+.button-x{
+  float:right;
+}
 
+.button-x:hover{
+  float:right;
+  background-color: red;
+  cursor: pointer;
+}
