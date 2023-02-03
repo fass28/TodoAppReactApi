@@ -13,6 +13,11 @@ export const UserPageTodo = () => {
   const [isChecked, setIsChecked] = useState([]);
   const [taskLeft, setTaskLeft] = useState(0);
   const [loading, setLoading] = useState('disabled');
+  const [classActive, setClassActive] = useState(false);
+  const [classAll, setClassAll] = useState(true);
+  const [classCompleted, setClassCompleted] = useState(false);
+  
+
 
   const inputRef = useRef(null);
   
@@ -96,15 +101,24 @@ export const UserPageTodo = () => {
   const handleAllTasks = () => {
     console.log('aqui all tasks');
     setFilteredTasks(tasks)
+    setClassAll(true)
+    setClassCompleted(false)
+    setClassActive(false)
   }
 
   const handleActiveTasks = () => {
     setFilteredTasks(tasks.filter(t => !t.done))
+    setClassActive(true)
+    setClassAll(false)
+    setClassCompleted(false)
   }
   
   const handleCompletedTasks = () => {
     console.log('aqui completed tasks');
     setFilteredTasks(tasks.filter(t => t.done))
+    setClassCompleted(true)
+    setClassAll(false)
+    setClassActive(false)
   }
 
 
@@ -156,10 +170,10 @@ export const UserPageTodo = () => {
             </div>
             <div className="tasks-footer">
               <span className="span-footer">{taskLeft} Task Left</span>
-              <span className="span-footer" onClick={handleAllTasks}>All</span>
-              <span className="span-footer" onClick={handleActiveTasks}>Active</span>
-              <span className="span-footer" onClick={handleCompletedTasks}>Completed</span>
-              <span className="span-footer" onClick={deleteAll}>
+              <span className={`span-footer ${(classAll) ? 'span-active' : ''}`} onClick={handleAllTasks}>All</span>
+              <span className={`span-footer ${(classActive) ? 'span-active' : ''}`} onClick={handleActiveTasks}>Active</span>
+              <span className={`span-footer ${(classCompleted) ? 'span-active' : ''}`} onClick={handleCompletedTasks}>Completed</span>
+              <span className="span-footer spam-active" onClick={deleteAll}>
                 Clear Completed
               </span>
             </div>

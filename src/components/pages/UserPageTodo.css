@@ -98,6 +98,10 @@
   color: rgb(202, 173, 173);
 }
 
+.span-active{
+  color: white;
+}
+
 .task-text{
   cursor: pointer;
 }
