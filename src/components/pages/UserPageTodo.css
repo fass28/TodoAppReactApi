@@ -6,8 +6,11 @@
 
 .title-name{
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
+
+
 
 .ul-tasks{
   list-style-type: none;
