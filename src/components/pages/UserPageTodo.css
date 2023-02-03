@@ -1,10 +1,12 @@
 .tasks-box{
   margin: auto;
-  width: 50%;
-  border: 3px solid green;
-  padding: 10px;
-  background-color: #393A4B;
+  width: 540px;
   color: white;
+}
+
+.title-name{
+  display: flex;
+  justify-content: space-between;
 }
 
 .ul-tasks{
@@ -13,30 +15,141 @@
   margin: 0;
 }
 
-.input-checkbox{
-  margin-right: 30px;
+.div-tasks{
+  background-color: #393A4B;
 }
+
+.form{
+  background-color: #393A4B;
+  margin: 25px 0;
+  padding: 7px 0;
+}
+
+.input-form{
+  background-color:#393A4B ;
+  width: 400px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.input-form:disabled{
+  cursor:wait
+}
+
+
+.li-tasks{
+  height: 65px;
+  border: 0.5px solid gray;
+  display: flex;
+  align-items: center;
+}
+
+
+.input-checkbox{
+  margin: 0 15px;
+  width:24px;
+  height: 24px;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid gray;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.input-checkbox:checked{
+  appearance: auto;
+  clip-path: circle(50% at 50% 50%);
+  background-color: rgb(0, 255, 17);
+}
+
 
 .tasks-footer{
   color: rgb(155, 131, 131);
-  margin: 20px 0;
-}
-.span{
-  display: inline-block;
-  margin: 15px;
+  background-color: #393A4B;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 15px;
 }
 
 .button-x{
-  float:right;
+  margin-left: auto;
+  margin-right: 15PX;
+  visibility: hidden;
 }
+
+.li-tasks:hover  .button-x{
+  visibility:visible;
+}
+
 
 .button-x:hover{
-  float:right;
-  background-color: red;
   cursor: pointer;
 }
 
-.span:hover{
-  background-color: red;
+.span-footer:hover{
+  cursor: pointer;
+  color: rgb(202, 173, 173);
+}
+
+.task-text{
   cursor: pointer;
 }
+
+.input-checkbox:checked + .task-text{
+  text-decoration: line-through
+}
+
+
+
+
+
+
+  .loader:before,
+  .loader:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    transform: rotateX(70deg);
+    animation: 1s spin linear infinite;
+  }
+ 
+  .loader {
+    width: 22px;
+    height:22px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    margin: 0 15px;
+    }
+
+  .loader-0 {
+    width: 22px;
+    height:22px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0 15px;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 

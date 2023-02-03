@@ -1,3 +1,7 @@
 body{
-  background-color: rgb(67, 97, 181);
+  background: linear-gradient(180deg, rgb(49, 81, 162),white, rgb(17, 140, 211));
+}
+
+#main{
+  padding: 170px 0;
 }

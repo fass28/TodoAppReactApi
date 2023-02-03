@@ -1,45 +1,67 @@
 .card-box{
-  background-color: rgb(77, 121, 196);
+  background-color: rgb(47, 40, 139);
   text-align: center;
-  margin: 30px;
   padding-bottom: 80px;
   border-radius: 2%;
+  height: 500px;
+  margin-top: 70px;
+  margin-bottom: 100px;
+  position: relative;
+  color: white;
 }
 
 .user-img-box{
   height: 100px;
-  background-color:greenyellow;
   display: flex;
   justify-content: center;
 }
 
 .user-img{
-  background-color: red;
-  width: 200px;
-  height:200px;
+  width: 250px;
+  height:250px;
   border-radius: 50%;
-  margin-top: 50px;
-  border: solid;
-  border-width: 8px;
-  border-color: white;
   overflow: hidden;
+  position: absolute;
+  top: -90px;
+  padding: 12px;
+  background: rgb(58, 47, 179)
+
 }
 
-.img{
+.img-male{
+  border-radius: 50%;
   height: 100%;
   width: 100%;
+  padding: 10px;
+  background:linear-gradient(180deg, rgb(0, 255, 30),white, blue);
+}
 
+.img-female{
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  background:linear-gradient(180deg, red,white, rgb(218, 156, 14));
 }
 
 .user-name{
-  margin-top: 170px;
+  margin-top: 90px;
+  font-size: 35px;
 }
 
 .user-position{
   color: rgb(156, 180, 201);
+  font-size: 12px;
 }
 
 .card-box hr{
   width: 80%;
   margin: 30px auto;
+}
+
+.button{
+  border-radius: 36px / 53%;
+  padding: 1em 2em;
+  background-color: #3d3ec5;
+  border: none;
 }

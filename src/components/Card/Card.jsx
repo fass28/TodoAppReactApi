@@ -3,31 +3,29 @@ import './Card.css'
 
 export const Card = ({user,onUserEvent}) => {
 
-  const UserAbout = user.about.split("").slice(0,60).join("")
+  const userName = user.name.split("").slice(0,15).join("")
+  const UserAbout = user.about.split("").slice(0,35).join("")
 
-/*   const onUserEvent = (id) =>{
-    console.log(id);
-  }
- */
+
   return (
     <>
       <div className="card-box">
         <div className="user-img-box">
           <div className='user-img'>
-            <img src={user.avatar} alt="userImage" className='img' />
+            <img src={user.avatar} alt="userImage" className={(user.sex === 'male') ? 'img-male' : 'img-female'} />
           </div>
         </div>
         <div className="name-position">
-          <h1 className='user-name'>{user.name}</h1>
+          <h1 className='user-name'>{userName}</h1>
           <h4 className='user-position'>{user.jobtitle}</h4>
         </div>
         <div className="about-me"> 
           <h3>About </h3>
-          <p>{UserAbout} <a href="">mas...</a></p>
+          <p>{UserAbout}</p>
         </div>
         <hr />
         <div>
-          <Button size='lg' onClick={() => onUserEvent(user.id)}>SEE USER</Button>
+          <Button size='lg' className='button' onClick={() => onUserEvent(user.id)}>SEE USER</Button>
         </div>
       </div>
     </>

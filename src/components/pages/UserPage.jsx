@@ -17,12 +17,14 @@ React.useEffect(() => {
   });
 }, []);
 
-if (!users) return null;
 
 const onUserEvent = (id) => {
   navigate(`/users/${id}`)
 }
 
+console.log(users);
+
+if (!users) return null;
   return (
     <>
       <div className="container">
