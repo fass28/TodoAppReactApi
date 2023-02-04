@@ -6,7 +6,6 @@ export const Card = ({user,onUserEvent}) => {
   const userName = user.name.split("").slice(0,15).join("")
   const UserAbout = user.about.split("").slice(0,35).join("")
 
-
   return (
     <>
       <div className="card-box">
