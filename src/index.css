@@ -1,5 +1,6 @@
 body{
-  background: linear-gradient(180deg, rgb(49, 81, 162),white, rgb(17, 140, 211));
+  /* background: linear-gradient(180deg, rgb(49, 81, 162),white, rgb(17, 140, 211)); */
+  background-color: #efefef;
 }
 
 #main{

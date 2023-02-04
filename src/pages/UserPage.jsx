@@ -1,9 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 import { Card } from '../components/Card/Card'
+import { Loading } from '../components/Loading/Loading'
 import { useUsers } from '../hooks/useUsers'
 
 export const UserPage = () => {
-  const { users } = useUsers()
+  const { users, loading } = useUsers()
 
   const navigate = useNavigate()
 
@@ -11,9 +12,7 @@ export const UserPage = () => {
     navigate(`/users/${id}`)
   }
 
-  console.log(users)
-
-  if (!users) return null
+  if (loading) return <Loading />
   return (
     <>
       <div className="container">
