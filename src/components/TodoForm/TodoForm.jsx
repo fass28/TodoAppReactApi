@@ -1,13 +1,15 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useForm } from '../../hooks/useForm'
 import './TodoForm.css'
 
-export const TodoForm = ({ userId, onCreated }) => {
-  const { input, loading, onInputChange, onFormSubmit } = useForm(userId)
+export const TodoForm = ({ userId, onCreated, tasks }) => {
+  const { input, loading, inputRef, onInputChange, onFormSubmit } = useForm(userId)
 
   const handleSubmit = async (e) => {
-    await onFormSubmit(e)
-    onCreated()
+    const created = await onFormSubmit(e, tasks)
+    if (created) {
+      onCreated()
+    }
   }
 
   return (
@@ -15,6 +17,7 @@ export const TodoForm = ({ userId, onCreated }) => {
       <span className={!loading ? 'loader-0' : 'loader'}></span>
       <span>
         <input
+          autoFocus={true}
           id="input-form"
           value={input}
           type="text"
@@ -22,6 +25,7 @@ export const TodoForm = ({ userId, onCreated }) => {
           placeholder="Enter a new Todo"
           onChange={(e) => onInputChange(e.target.value)}
           disabled={loading ? 'disabled' : ''}
+          ref={inputRef}
         />
       </span>
     </form>

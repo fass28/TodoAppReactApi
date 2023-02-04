@@ -7,6 +7,7 @@ import './TodoList.css'
 
 export const TodoList = ({ userId }) => {
   const {
+    tasks,
     filteredTasks,
     loading,
     pendingTasks,
@@ -24,7 +25,7 @@ export const TodoList = ({ userId }) => {
 
   return (
     <div className="tasks-container">
-      <TodoForm userId={userId} onCreated={getTasks} />
+      <TodoForm userId={userId} tasks={tasks} onCreated={getTasks} />
 
       <div className="div-tasks">
         {filteredTasks.map((task) => (

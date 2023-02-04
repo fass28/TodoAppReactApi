@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createTaskByUserId } from '../services/tasks'
 
 export const useForm = (userid) => {
@@ -9,23 +9,32 @@ export const useForm = (userid) => {
     setInput(value)
   }
 
-  const onFormSubmit = async (e) => {
+  const onFormSubmit = async (e, tasks) => {
     e.preventDefault()
-    if (input.length <= 1) return
-
+    if (input.length <= 1 || tasks.some((task) => task.title === input)) return false
     setLoading(true)
-
     await createTaskByUserId(userid, { title: input, done: false })
-
     setInput('')
-    /* inputRef.current.focus() */
     setLoading(false)
-    /* console.log(inputRef) */
+    return true
+  }
+
+  useEffect(() => {
+    if (!loading) {
+      setFocus()
+    }
+  }, [loading])
+
+  const inputRef = useRef(null)
+
+  const setFocus = () => {
+    inputRef.current && inputRef.current.focus()
   }
 
   return {
     input,
 		loading,
+    inputRef,
     onInputChange,
     onFormSubmit,
   }
