@@ -7,13 +7,13 @@ export const useUsers = () => {
 
   useEffect(() => {
     getUsers().then((users) => {
-			setUsers(users)
-			setLoading(false)
-		})
+      setUsers(users)
+      setLoading(false)
+    })
   }, [])
 
   return {
     users,
-		loading
+    loading
   }
 }

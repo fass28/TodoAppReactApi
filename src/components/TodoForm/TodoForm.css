@@ -43,3 +43,22 @@
     transform: rotate(360deg);
   }
 }
+
+.form {
+  background-color: #393a4b;
+  margin: 25px 0;
+  padding: 7px 0;
+}
+
+.input-form {
+  background-color: #393a4b;
+  width: 400px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.input-form:disabled {
+  cursor: wait;
+}

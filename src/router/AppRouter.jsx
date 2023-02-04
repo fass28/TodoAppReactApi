@@ -9,7 +9,7 @@ export const AppRouter = () => {
       <div id='main'>
         <Routes>
             <Route path="/" element={<UserPage/>}/>
-            <Route path="/users/:userid" element={<UserPageTodo/>}/>
+            <Route path="/users/:userId" element={<UserPageTodo/>}/>
         </Routes>
       </div>
     </>
