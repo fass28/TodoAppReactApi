@@ -1,0 +1,47 @@
+.li-tasks {
+  height: 65px;
+  border: 0.5px solid gray;
+  display: flex;
+  align-items: center;
+}
+
+.input-checkbox {
+  margin: 0 15px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid gray;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.input-checkbox:checked {
+  appearance: auto;
+  clip-path: circle(50% at 50% 50%);
+  background-color: rgb(0, 255, 17);
+}
+
+.button-x {
+  margin-left: auto;
+  margin-right: 15px;
+  visibility: hidden;
+}
+
+.li-tasks:hover .button-x {
+  visibility: visible;
+}
+
+.button-x:hover {
+  cursor: pointer;
+}
+
+.input-checkbox:checked + .task-text {
+  text-decoration: line-through;
+}
+
+.task-text {
+  cursor: pointer;
+}

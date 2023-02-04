@@ -1,0 +1,32 @@
+.tasks-box {
+  margin: auto;
+  width: 540px;
+  color: white;
+}
+
+.ul-tasks {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.div-tasks {
+  background-color: #393a4b;
+}
+
+.tasks-footer {
+  color: rgb(155, 131, 131);
+  background-color: #393a4b;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 15px;
+}
+
+.span-footer:hover {
+  cursor: pointer;
+  color: rgb(202, 173, 173);
+}
+
+.span-active {
+  color: white;
+}

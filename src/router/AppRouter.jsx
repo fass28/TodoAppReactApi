@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { UserPage } from '../components/pages/UserPage'
-import { UserPageTodo } from '../components/pages/UserPageTodo'
+import { UserPage } from '../pages/UserPage'
+import { UserPageTodo } from '../pages/UserPageTodo'
 
 export const AppRouter = () => {
   return (
@@ -9,7 +9,7 @@ export const AppRouter = () => {
       <div id='main'>
         <Routes>
             <Route path="/" element={<UserPage/>}/>
-            <Route path="/users/:userid" element={<UserPageTodo/>}/>
+            <Route path="/users/:userId" element={<UserPageTodo/>}/>
         </Routes>
       </div>
     </>
