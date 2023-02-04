@@ -10,3 +10,12 @@ export const getUsers = async () => {
     console.error(err)
   }
 }
+
+export const getUserById = async (id) => {
+  try {
+    const { data } = await axios.get(`${BASE_URL}/api/users/${id}`)
+    return data
+  } catch (err) {
+    console.error(err)
+  }
+}
