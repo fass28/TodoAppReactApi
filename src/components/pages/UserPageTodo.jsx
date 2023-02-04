@@ -49,7 +49,7 @@ export const UserPageTodo = () => {
     setFormState('')
     setLoading('disabled')
     const getResponse = await axios.get(baseURLtasks)
-    setTasks(getResponse.data)
+    setFilteredTasks(getResponse.data)
     inputRef.current.focus()
     setLoading('')
     console.log(inputRef);
@@ -59,7 +59,7 @@ export const UserPageTodo = () => {
     const baseURLtasksId = `https://63cf2168e52f5878299ab5e2.mockapi.io/api/users/${userid}/tasks/${taskId}`
     await axios.delete(baseURLtasksId)
     const getResponse = await axios.get(baseURLtasks)
-    setTasks(getResponse.data)
+    setFilteredTasks(getResponse.data)
   }
 
   const handleCheck = async  (e,taskId) => {
@@ -92,7 +92,7 @@ export const UserPageTodo = () => {
       await deleteItem(url)
     }
     const getResponse = await axios.get(baseURLtasks)
-    setTasks(getResponse.data)
+    setFilteredTasks(getResponse.data)
   }
 
   if (!tasks || !user || !filteredTasks) return null;
