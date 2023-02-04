@@ -8,6 +8,7 @@ import {
 export const useTasks = (userId) => {
   // Tasks
   const [tasks, setTasks] = useState(null)
+  const [filteredTasks, setFilteredTasks] = useState([])
   const [loading, setLoading] = useState(true)
   const [idsChecked, setIdsChecked] = useState([])
   const [pendingTasks, setPendingTasks] = useState(0)
@@ -49,6 +50,20 @@ export const useTasks = (userId) => {
       setLoading(false)
     })
   }
+  
+  // Filters
+  const [filterText, setFilterText] = useState('All')
+
+  const handleFilter = (filter) => {
+    setFilterText(filter)
+    if (filter === 'All') {
+      setFilteredTasks(tasks)
+    } else {
+      const done = filter === 'Completed'
+      const tasksFiltered = tasks.filter((t) => t.done === done)
+      setFilteredTasks(tasksFiltered)
+    }
+  }
 
   useEffect(() => {
     getTasks()
@@ -60,17 +75,22 @@ export const useTasks = (userId) => {
     } else {
       const pendingTasks = tasks.filter(task => !task.done)
       setPendingTasks(pendingTasks.length)
+      setFilteredTasks(tasks)
     }
   }, [tasks])
 
   return {
     tasks,
+    filteredTasks,
     loading,
     pendingTasks,
+    filterText,
     setTasks,
     handleCheck,
     onTaskDelete,
     onDeleteAll,
     getTasks,
+    setFilteredTasks,
+    handleFilter,
   }
 }
