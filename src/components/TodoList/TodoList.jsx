@@ -7,7 +7,7 @@ import './TodoList.css'
 
 export const TodoList = ({ userId }) => {
 
-  const { tasks, loading, handleCheck, onTaskDelete, onDeleteAll, getTasks } = useTasks(userId)
+  const { tasks, loading, pendingTasks, handleCheck, onTaskDelete, onDeleteAll, getTasks } = useTasks(userId)
 
   if (loading) return <Loading />
 
@@ -26,25 +26,22 @@ export const TodoList = ({ userId }) => {
         ))}
       </div>
       <div className="tasks-footer">
-        {/* <span className="span-footer">{taskLeft} Task Left</span>
+        <span className="span-footer">{pendingTasks} Task Left</span>
         <span
-          className={`span-footer ${classAll ? 'span-active' : ''}`}
-          onClick={handleAllTasks}
+          className='span-footer span-active'
         >
           All
         </span>
         <span
-          className={`span-footer ${classActive ? 'span-active' : ''}`}
-          onClick={handleActiveTasks}
+          className='span-footer'
         >
           Active
         </span>
         <span
-          className={`span-footer ${classCompleted ? 'span-active' : ''}`}
-          onClick={handleCompletedTasks}
+          className='span-footer'
         >
           Completed
-        </span> */}
+        </span>
         <span className="span-footer spam-active" onClick={onDeleteAll}>
           Clear Completed
         </span>
