@@ -67,7 +67,8 @@ export const useTasks = (userId) => {
     setClassActive(false)
   }
 
-  useEffect(() => {
+  const getTasks = async() => {
+    setLoading(true)
     getTasksByUserId(userId).then((tasks) => {
       setTasks(tasks)
       if (tasks.length) {
@@ -77,6 +78,10 @@ export const useTasks = (userId) => {
       }
       setLoading(false)
     })
+  }
+
+  useEffect(() => {
+    getTasks()
   }, [])
 
   return {
@@ -85,6 +90,7 @@ export const useTasks = (userId) => {
     setTasks,
     handleCheck,
     onTaskDelete,
-    onDeleteAll
+    onDeleteAll,
+    getTasks,
   }
 }

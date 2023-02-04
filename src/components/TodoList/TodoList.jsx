@@ -7,13 +7,13 @@ import './TodoList.css'
 
 export const TodoList = ({ userId }) => {
 
-  const { tasks, loading, handleCheck, onTaskDelete, onDeleteAll } = useTasks(userId)
+  const { tasks, loading, handleCheck, onTaskDelete, onDeleteAll, getTasks } = useTasks(userId)
 
   if (loading) return <Loading />
 
   return (
     <div className="tasks-container">
-      <TodoForm userId={userId} />
+      <TodoForm userId={userId} onCreated={getTasks} />
 
       <div className="div-tasks">
         {tasks.map((task) => (

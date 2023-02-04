@@ -1,12 +1,17 @@
 import { useForm } from '../../hooks/useForm'
 import './TodoForm.css'
 
-export const TodoForm = ({ userId }) => {
+export const TodoForm = ({ userId, onCreated }) => {
 
-  const { input, loading, onInputChange, onFormSubmit} = useForm(userId)
+  const { input, loading, onInputChange, onFormSubmit } = useForm(userId)
+
+  const handleSubmit = async(e) => {
+    await onFormSubmit(e)
+    onCreated()
+  }
 
   return (
-    <form onSubmit={onFormSubmit} className="form">
+    <form onSubmit={handleSubmit} className="form">
       <span className={!loading ? 'loader-0' : 'loader'}></span>
       <span>
         <input
