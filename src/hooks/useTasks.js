@@ -42,12 +42,12 @@ export const useTasks = (userId) => {
     setLoading(true)
     getTasksByUserId(userId).then((tasks) => {
       setTasks(tasks)
+      setLoading(false)
       if (tasks.length) {
         setIdsChecked(
           tasks.filter((task) => task.done).map((t) => t.id)
         )
       }
-      setLoading(false)
     })
   }
   
